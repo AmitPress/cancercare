@@ -1,10 +1,10 @@
-#### CancerHealthcare - A website dedicated to cancer patients in Bangladesh
+# CancerHealthcare - A website dedicated to cancer patients in Bangladesh
 
-# Contribute :
+## Contribute :
 - Fork the repo.
 - clone it.
 - open the folder.
-# For windows:
+#### For windows:
 - create a virtual environment
 ```
 py -m venv venv
@@ -24,7 +24,7 @@ pip install -r requirements.txt
 cd cancercare
 py manage.py runserver
 ```
-# For linux:
+#### For linux:
 - create a virtual environment
 ```
 python3 -m venv venv

@@ -1,25 +1,44 @@
 #### CancerHealthcare - A website dedicated to cancer patients in Bangladesh
 
 # Contribute :
-i) Fork the repo.
-ii) clone it.
-iii) open the folder.
-iv) create a virtual environment
-for linux:
+- Fork the repo.
+- clone it.
+- open the folder.
+# For windows:
+- create a virtual environment
 ```
-python3 -m venv venv
+py -m venv venv
 ```
-v) source the virtual environment
+- activate the virtual environment
 ```
-source venv/bin/activate
+cd venv/Scripts
+.\activate
 ```
-vii) install dependencies:
+- install dependencies
 ```
 pip install -r requirements.txt
 ```
-viii) run the server:
+- make migrations (optional for the initial setup)
+- run the server
+```
+cd cancercare
+py manage.py runserver
+```
+# For linux:
+- create a virtual environment
+```
+python3 -m venv venv
+```
+- source the virtual environment
+```
+source venv/bin/activate
+```
+- install dependencies:
+```
+pip install -r requirements.txt
+```
+- run the server:
 ```
 cd cancercare
 python manage.py runserver
 ```
-Bida

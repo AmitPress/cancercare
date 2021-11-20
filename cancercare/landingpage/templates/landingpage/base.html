@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} <title>CancerCare</title> {% endblock title %}
+    <!-- <link rel="stylesheet" href="{% static 'landingpage/css/bootstrap.min.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'landingpage/css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'landingpage/css/rocking.css' %}">
+</head>
+<body>
+
+    <!-- header ( title + navigation )-->
+    <nav class="navigation">
+        <a href="/home" class="brand">
+        <img class="logo" src="{% static 'landingpage/img/logo.png' %}" />
+        <span class="title">Cancer Treatment Aid</span>
+        </a>
+    
+        <div class="menu">
+        <a href="/signup/" class="pseudo button" style="color:rgb(33, 2, 46);">Sign Up</a>
+        <a href="/login/" class="button" style="background-color: rgb(9, 67, 226);">Login</a>
+        </div>
+    </nav>
+    <!-- body ( features ) -->
+    {% block body %} Body {% endblock body %}
+    <!-- footer ( info ) -->
+    {% block footer %}
+    <div class="footer">
+        © 2020 Copyright: CancerTreatmentAid.com
+    </div>
+    {% endblock footer %}
+    <script src="{% static 'landingpage/js/jquery.js' %}"></script>
+    <!-- <script src="{% static 'landingpage/js/bootstrap.min.js' %}"></script> -->
+</body>
+</html>

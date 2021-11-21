@@ -14,14 +14,14 @@
 
     <!-- header ( title + navigation )-->
     <nav class="navigation">
-        <a href="/home" class="brand">
+        <a href="{% url 'home' %}" class="brand">
         <img class="logo" src="{% static 'landingpage/img/logo.png' %}" />
         <span class="title">Cancer Treatment Aid</span>
         </a>
     
         <div class="menu">
-        <a href="/signup/" class="pseudo button" style="color:rgb(33, 2, 46);">Sign Up</a>
-        <a href="/login/" class="button" style="background-color: rgb(9, 67, 226);">Login</a>
+        <a href="{% url 'signup' %}" class="pseudo button" style="color:rgb(33, 2, 46);">Sign Up</a>
+        <a href="{% url 'login' %}" class="button" style="background-color: rgb(9, 67, 226);">Login</a>
         </div>
     </nav>
     <!-- body ( features ) -->

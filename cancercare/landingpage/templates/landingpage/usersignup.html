@@ -2,15 +2,15 @@
 {% block body %}
 <div class="centered">
     <div class="card" style="padding: 5vw;">
-        <div class="box">
-            <fieldset class="flex one">
-                <label><input type="text" placeholder="Full Name"></label>
-                <label><input type="text" placeholder="Phone"></label>
-                <label><input type="email" placeholder="Email"></label>
-                <label><input type="password" placeholder="Password"></label> 
-            </fieldset>
-            <button>SIGN UP</button>
-        </div>
+        <form action="" method="post">
+            <label for="{{form.name.id_for_label}}">Name:</label>
+            {{form.name}}
+            <label for="form.email.id_for_label">Email:</label>
+            {{form.email}}
+            <label for="form.passwprd.id_for_label">Password:</label>
+            {{form.password}}
+            <button>SIGNUP</button>
+        </form>
     </div>
 </div>
 {% endblock body %}

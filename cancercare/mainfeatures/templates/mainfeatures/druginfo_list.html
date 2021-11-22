@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Drug List</title>
+
+    <link rel="stylesheet" href="{% static 'mainfeatures/css/mdb.min.css' %}">
+    <style>
+        main.centerize{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .sub{
+            width: 60vw;
+            height: 80vh;
+            background: rgb(162, 198, 255);
+        }
+    </style>
+</head>
+<body>
+    <main class="centerize">
+        <div class="sub mt-5">
+            <h1>Drug List</h1>
+            <br />
+            <table class="table table-striped">
+                <th>
+                    <tr>
+                        <th scope="col">Drug Name</th>
+                        <th scope="col">Drug Price</th>
+                        <th scope="col">Availability</th>
+                        <th scope="col">manufacturer</th>
+                    </tr>
+                </th>
+                <tbody>
+                    {% for drug in object_list %}
+                    <tr>
+                        <td>{{drug.drugname}}</td>
+                        <td>{{drug.drugprice}}</td>
+                        <td>{{drug.availability}}</td>
+                        <td>{{drug.manufacturer}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="{% static 'mainfeatures/js/mdb.min.js' %}"></script>
+</body>
+</html>

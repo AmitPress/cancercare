@@ -20,8 +20,12 @@
         </a>
     
         <div class="menu">
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="button" style="background-color: rgb(9, 67, 226);">Logout</a>
+        {% else %}
         <a href="{% url 'signup' %}" class="pseudo button" style="color:rgb(33, 2, 46);">Sign Up</a>
         <a href="{% url 'login' %}" class="button" style="background-color: rgb(9, 67, 226);">Login</a>
+        {% endif %}
         </div>
     </nav>
     <!-- body ( features ) -->

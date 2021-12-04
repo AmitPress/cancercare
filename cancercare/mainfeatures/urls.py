@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import RegisterAmbulanceMemberFormView, DrugListView
+from .views import RegisterAmbulanceMemberFormView, DrugListView, VolunteerView
 urlpatterns=[
     path('register-ambulance/', RegisterAmbulanceMemberFormView.as_view(), name="register-ambulance"),
-    path('druglist/', DrugListView.as_view(), name="druglist")
+    path('druglist/', DrugListView.as_view(), name="druglist"),
+    path('register-volunteer/', VolunteerView.as_view(), name="registervolunteer")
 ]

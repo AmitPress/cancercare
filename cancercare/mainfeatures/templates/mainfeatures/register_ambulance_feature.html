@@ -5,6 +5,11 @@
     <title>Register For Emergency Help</title>
 
     <link rel="stylesheet" href="{% static 'mainfeatures/css/mdb.min.css' %}">
+    <style>
+        body{
+            background: linear-gradient(90deg, pink, violet);
+        }
+    </style>
 </head>
 <body>
     <section class="h-100 gradient-form" >
@@ -17,29 +22,29 @@
                                 {% csrf_token %}
                                 <p class="h4 mb-4">Emergency Ambulance Registration</p>
                                 <div class="md-form mb-4">
-                                    <label for="{{form.fname.id_for_label}}" class="form-label mr-2">First Name</label>
+                                    <label for="{{form.fname.id_for_label}}" class="form-label me-2">First Name</label>
                                     {{form.fname}}
                                 </div>
                                 <div class="md-form mb-4"> 
-                                    <label for="{{form.lname.id_for_label}}" class="form-label mr-2">Last Name</label>
+                                    <label for="{{form.lname.id_for_label}}" class="form-label me-2">Last Name</label>
                                     {{form.lname}}
                                 </div>
                                 <div class="md-form mb-4">
-                                    <label for="{{form.fulname.id_for_label}}" class="form-label mr-2">Full Name</label>
+                                    <label for="{{form.fulname.id_for_label}}" class="form-label me-2">Full Name</label>
                                     {{form.fulname}}
                                 </div>
                                 <div class="md-form mb-4">
-                                    <label for="{{form.phone.id_for_label}}" class="form-label mr-2">Phone No.</label>
+                                    <label for="{{form.phone.id_for_label}}" class="form-label me-2">Phone No.</label>
                                     {{form.phone}}
                                 </div>
                                 
                                 <div class="md-form mb-4">
-                                    <label for="{{form.address.id_for_label}}" class="form-label mr-2">Address</label>
+                                    <label for="{{form.address.id_for_label}}" class="form-label me-3">Address</label>
                                     {{form.address}}
                                 </div>
 
                                 <div class="md-form mb-4">
-                                    <label for="{{form.age.id_for_label}}" class="form-label mr-2">Age</label>
+                                    <label for="{{form.age.id_for_label}}" class="form-label me-4">Age</label>
                                     {{form.age}}
                                 </div>
 

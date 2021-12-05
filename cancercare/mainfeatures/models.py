@@ -36,3 +36,15 @@ class Volunteer(models.Model):
         return self.first_name
     def get_absolute_url(self):
         return reverse('home')
+class Specialist(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    full_name = str(first_name) + str(last_name)
+    phone = models.IntegerField()
+    address = models.CharField(max_length=512)
+    age = models.IntegerField()
+
+    def __str__(self):
+        return self.first_name
+    def get_absolute_url(self):
+        return reverse('home')

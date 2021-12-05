@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, ListView
-from .models import RegisterAmbulanceMember, DrugInfo, Volunteer
+from .models import RegisterAmbulanceMember, DrugInfo, Volunteer, Specialist
 
 # Create your views here.
 
@@ -12,6 +12,10 @@ class RegisterAmbulanceMemberFormView(CreateView):
 class VolunteerView(CreateView):
     model = Volunteer
     template_name = 'mainfeatures/register_volunteer.html'
+    fields = '__all__'
+class SpecialistView(CreateView):
+    model = Specialist
+    template_name = 'mainfeatures/register_specialist.html'
     fields = '__all__'
 
 class DrugListView(ListView):

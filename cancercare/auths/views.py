@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login
+from .models import UserProfile
 # Create your views here.
 
 def signup(request):
@@ -19,6 +20,9 @@ def signup(request):
         thisuser.first_name = fname
         thisuser.last_name = lname
         thisuser.save()
+        # After we successfully create the user, we will create the user profile
+        # Added UserProfile -- 
+        user_profile = UserProfile.objects.create(user=thisuser, role='user') ## lets make it user rather..
         messages.success(request, "Your Account has been Successfully created")
         return redirect('login')
 
@@ -43,3 +47,25 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('home')
+
+# Now lets create the view for the profile page 
+def profile(request):
+    # Check if user is logged in
+    if request.user.is_authenticated:
+        the_profile = UserProfile.objects.get(user=request.user)
+        if the_profile.role == 'compounder':
+            return render(request, 'auths/compounder_profile.html', {'user_profile': the_profile})
+        elif the_profile.role == 'user':
+            return render(request, 'auths/profile.html', {'user_profile': the_profile, 'user': request.user})
+        else:
+            messages.error(request, 'Invalid User Role')
+            return redirect('login')
+        return render(request, 'auths/profile.html') # I am creating the file 'profile.html' in templates
+    # Redirect user to login page if the user isnt logged in
+    else:
+        messages.error(request, "You need to be logged in to view your profile")
+        return redirect('login')
+
+    #I have created it already. Look at the templates folder
+    # okay then I am addin header and footer in that template
+    # Okay. But are you using a base template in your project?

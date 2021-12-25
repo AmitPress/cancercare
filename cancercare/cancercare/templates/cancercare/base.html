@@ -1,76 +1,12 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{% static 'cancercare/img/favicon.ico' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'cancercare/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'cancercare/css/mdb.min.css' %}">
-    <title>CancerCare | HomePage</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | CancerCare</title>
 </head>
 <body>
-    <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand me-2" href="{% url '/' %}">
-        <img
-          src="{% static 'cancercare/img/logo.png' %}"
-          height="16"
-          alt=""
-          loading="lazy"
-          style="margin-top: -1px;"
-        />
-      </a>
   
-      <!-- Toggle button -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#navbarButtonsExample"
-        aria-controls="navbarButtonsExample"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-  
-      <!-- Collapsible wrapper -->
-      <div class="collapse navbar-collapse" id="navbarButtonsExample">
-        <!-- Left links -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Dashboard</a>
-          </li>
-        </ul>
-        <!-- Left links -->
-  
-        <div class="d-flex align-items-center">
-          <button type="button" class="btn btn-link px-3 me-2">
-            Login
-          </button>
-          <button type="button" class="btn btn-primary me-3">
-            Sign up for free
-          </button>
-          <a
-            class="btn btn-dark px-3"
-            href="https://github.com/mdbootstrap/mdb-ui-kit"
-            role="button"
-            ><i class="fab fa-github"></i
-          ></a>
-        </div>
-      </div>
-      <!-- Collapsible wrapper -->
-    </div>
-    <!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
-    
-    <script src="{% static 'cancercare/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'cancercare/js/jquery-3.4.1.min.js' %}"></script>
-    <script src="{% static 'cancercare/js/mdb.min.js' %}"></script>
-    <script src="{% static 'cancercare/js/popper.min.js' %}"></script>
 </body>
 </html>

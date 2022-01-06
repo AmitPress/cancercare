@@ -4,10 +4,14 @@
 <head>
   <title>Sign Up</title>
   <link rel="stylesheet" href="{% static 'auths/css/mdb.min.css' %}">
+  
   <style>
     body {
       background-image: linear-gradient(45deg, pink, rgb(64, 64, 255));
     }
+    {% comment %} form .error {
+      color: #ff0000;
+    } {% endcomment %}
   </style>
 </head>
 <body>
@@ -18,7 +22,7 @@
           <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
             <div class="card-body p-4 p-md-5">
               <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">General User Registration Form</h3>
-              <form action="{% url 'signup' %}" method="POST" autocomplete="off">
+              <form action="{% url 'signup' %}" method="POST" autocomplete="off" name="signup">
                 {% csrf_token %}
                 <div class="row">
                   <div class="col-md-6 mb-4">
@@ -97,5 +101,10 @@
   </section>
 
   <script src="{% static 'auths/js/mdb.min.js' %}"></script>
+  <script src="{% static 'auths/js/jquery.js' %}"></script>
+  <script src="{% static 'auths/js/validate.js' %}"></script>
+  <script>
+    
+  </script>
 </body>
 </html>

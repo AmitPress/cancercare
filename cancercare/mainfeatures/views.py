@@ -21,3 +21,16 @@ class SpecialistView(CreateView):
 class DrugListView(ListView):
     model = DrugInfo
     template_name = 'mainfeatures/druginfo_list.html'
+    paginate_by = 5
+    # queryset = DrugInfo.objects.all()
+
+# implement drug search
+def search_drug(request):
+    query = request.GET['search_drug']
+    lists = DrugInfo.objects.filter(drugname__icontains=query)
+    return render(request, 'mainfeatures/druginfo_list.html', {'object_list':lists})
+def forum(request):
+    return render(request, 'mainfeatures/forum.html', {})
+
+    
+    

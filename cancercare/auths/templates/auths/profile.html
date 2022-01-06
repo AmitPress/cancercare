@@ -1,117 +1,56 @@
+{% extends 'core/base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CancerCare | UserProfile</title>
-    <!--I am using bootstrap , material design bootstrap-->
-    <link rel="stylesheet" href="{% static 'auths/css/mdb.min.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-</head>
-<body>
-    <!--navigation bar-->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background: rgb(255,43,105); background-image: linear-gradient(90deg, rgba(255,43,105,1) 0%, rgba(61,255,206,1) 100%);">
-        <!-- Container wrapper -->
-        <div class="container">
-            <!-- Navbar brand -->
-            <a class="navbar-brand me-2" href="{%url 'home'%}">
-            <img
-                src="{%static 'aboutus/img/logo.png'%}"
-                height="85px"
-                weight="300px"
-                alt=""
-                loading="lazy"
-                style="margin-top: -1px;"
-            />
-            </a>
-
-            <!-- Toggle button -->
-            <button
-            class="navbar-toggler"
-            type="button"
-            data-mdb-toggle="collapse"
-            data-mdb-target="#navbarButtonsExample"
-            aria-controls="navbarButtonsExample"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            >
-            <i class="fas fa-bars"></i>
-            </button>
-
-            <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse" id="navbarButtonsExample">
-            <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-                </li>
-            </ul>
-            <!-- Left links -->
-
-            <div class="d-flex align-items-center">
-                <a href="{%url 'login'%}" class="btn btn-link me-3">Login</a>
-                <a href="{%url 'signup'%}" class="btn btn-primary">Sign Up</a>
+{% block title %}{{user_profile.user.first_name}}'s Profile | User Profile{% endblock title %}
+{% block body %}
+{% comment %} user profile implementation  {% endcomment %}
+<div class="container my-5 mx-2">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            {% comment %} profile card {% endcomment %}
+            <div class="card border border-3 my-3 py-3 mx-5 px-5">
+                <div class="card-title display-6">
+                    User Profile of <span class="text-uppercase text-primary">{{user_profile.user.first_name}} {{user_profile.user.last_name}}</span>
+                </div>
+                <hr />
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">First Name:</span> {{user_profile.user.first_name}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Last Name:</span> {{user_profile.user.last_name}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Email:</span> {{user_profile.user.email}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Phone:</span> {{user_profile.phone}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Role:</span> {{user_profile.role}}</li>
+                    </ul>
+                </div>
             </div>
-            </div>
-            <!-- Collapsible wrapper -->
         </div>
-        <!-- Container wrapper -->
-    </nav>
-    <!--the profile body will go here-->
-    
-    <!-- For testing purposes, I'll do a simpler version -->
-    <div class="container my-3">
-        <div class="row mx-5">
-            <div class="display-5" style="background:red"> <!--remove bg later-->
-                {{user.first_name}} hello
+        <div class="col-md-6 col-sm-12">
+            {% comment %} profile card {% endcomment %}
+            <div class="card border border-3 my-3 py-3 mx-5 px-5">
+                <div class="card-title display-6 text-danger">
+                    Forms Enrolled:
+                </div>
+                <hr />
+                <div class="card-body">
+                    <ul class="list-group position-relative">
+                        {% if status.rg_amb is True %}
+                            <li class="list-group-item">Registered for Ambulance: <i class="fas fa-check-double position-absolute end-0 ml-3"></i></li>
+                        {% else %}
+                            <li class="list-group-item">Registered for Ambulance: <i class="far fa-times-circle position-absolute end-0 ml-3"></i></li>
+                        {% endif %}
+                        {% if status.rg_vol is True %}
+                            <li class="list-group-item">Registered for Volunteership: <i class="fas fa-check-double position-absolute end-0 ml-3"></i></li>
+                        {% else %}
+                            <li class="list-group-item">Registered for Volunteership: <i class="far fa-times-circle position-absolute end-0 ml-3"></i></li>
+                        {% endif %}
+                        {% if status.rg_spe is True %}
+                            <li class="list-group-item">Registered for Specialist Doctor Visit: <i class="fas fa-check-double position-absolute end-0 ml-3"></i></li>
+                        {% else %}
+                            <li class="list-group-item">Registered for Specialist Doctor Visit: <i class="far fa-times-circle position-absolute end-0 ml-3"></i></li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-
-    <!--end profile body-->
-    <!--footer goes here-->
-    <footer class="bg-light text-lg-start">
-        <div class="py-4 text-center" style="background: rgba(0, 0, 0, 0.2);">
-          <a role="button" class="btn btn-primary btn-lg m-2"
-            href="#" rel="nofollow" target="_blank">
-            Donate Us
-          </a>
-          <a role="button" class="btn btn-warning btn-lg m-2 text-dark" href="#" target="_blank">
-            Download Our App
-          </a>
-        </div>
-    
-        <hr class="m-0" />
-    
-        <div class="text-center py-4 align-items-center">
-          <p>Follow CancerCare on social media</p>
-          <a href="https://www.youtube.com/" class="btn btn-danger m-1" role="button"
-            rel="nofollow" target="_blank">
-            <i class="fab fa-youtube"></i>
-          </a>
-          <a href="https://www.facebook.com/" class="btn m-1" role="button" rel="nofollow"
-            target="_blank" style="background: #00008b;">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://twitter.com/" class="btn btn-primary m-1" role="button" rel="nofollow"
-            target="_blank">
-            <i class="fab fa-twitter text-white"></i>
-          </a>
-          <a href="https://github.com/amitpress" class="btn btn-dark m-1" role="button" rel="nofollow"
-            target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-        </div>
-    
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-          © 2021-2022 Copyright:
-          <a class="text-dark" href="https://cancercare.com/">www.cancercare.com</a>
-        </div>
-        <!-- Copyright -->
-      </footer>
-    <script src="{% static 'auths/js/mdb.min.js' %}"></script>
-</body>
-</html>
+</div>
+{% endblock body %}

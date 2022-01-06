@@ -1,0 +1,7 @@
+- druglist search
+- responsive homepage
+- druglist resposiveness
+- implementation of role based system
+- profile and control panel for compounder 
+- profile and control panel for users
+- showcase for users enrolled forms

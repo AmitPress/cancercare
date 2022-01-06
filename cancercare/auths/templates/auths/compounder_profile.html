@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}{{user_profile.user.first_name}}'s Profile | Compounder Profile{% endblock title %}
+{% block body %}
+<div class="container my-5 mx-3">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            {% comment %} profile card {% endcomment %}
+            <div class="card border border-3 my-3 py-3 mx-5 px-5">
+                <div class="card-title display-6">
+                    User Profile of <span class="text-uppercase text-primary">{{user_profile.user.first_name}} {{user_profile.user.last_name}}</span>
+                </div>
+                <hr />
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">First Name:</span> {{user_profile.user.first_name}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Last Name:</span> {{user_profile.user.last_name}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Email:</span> {{user_profile.user.email}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Phone:</span> {{user_profile.phone}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Role:</span> {{user_profile.role}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

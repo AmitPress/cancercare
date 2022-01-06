@@ -29,7 +29,9 @@ def search_drug(request):
     query = request.GET['search_drug']
     lists = DrugInfo.objects.filter(drugname__icontains=query)
     return render(request, 'mainfeatures/druginfo_list.html', {'object_list':lists})
+
 def forum(request):
+    
     return render(request, 'mainfeatures/forum.html', {})
 
     

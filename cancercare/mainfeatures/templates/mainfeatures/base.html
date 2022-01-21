@@ -1,0 +1,160 @@
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'mainfeatures/css/mdb.min.css' %}">
+    <link rel="shortcut icon" href="{% static 'aboutus/img/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <style>
+        body{
+          background: #8ca6a5;
+        }
+        .sticky {
+          position: -webkit-sticky;
+          position: sticky !important;
+          top: 0 !important;
+          z-index: 5 !important;
+        }
+        .pos{
+          position: absolute;
+          top: 75%;
+          left: calc(50%-30vw);
+        }
+        
+        main.centerize{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .sub{
+            width: 60vw;
+            height: 80vh;
+            background: rgb(162, 198, 255);
+        }
+        body{
+            background-color: rgba(0,0,0,0.1) ;
+        }
+    </style>
+  <title>{%block title%} CancerCare | Home {% endblock %}</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light sticky" style="background: rgb(0,0,255); background-image: linear-gradient(90deg, rgba(0,0,128,0.5) 0%, rgba(61,255,206,1) 100%);">
+    <!-- Container wrapper -->
+    <div class="container">
+        <!-- Navbar brand -->
+        <a class="navbar-brand me-2" href="{%url 'home'%}">
+        <img
+            src="{%static 'aboutus/img/logo.png'%}"
+            height="85px"
+            weight="300px"
+            alt=""
+            loading="lazy"
+            style="margin-top: -1px;"
+        />
+        </a>
+
+        <!-- Toggle button -->
+        <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarButtonsExample"
+        aria-controls="navbarButtonsExample"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        >
+        <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item hstack">
+            <a class="nav-link navic" href="{% url 'home' %}">Home</a>
+            <a class="nav-link navic" href="{% url 'forum' %}">Feedback</a>
+            <a class="nav-link navic" href="{% url 'aboutus' %}">AboutUs</a>
+            <a class="nav-link navic" href="{% url 'druglist' %}">DrugList</a>
+
+            {% if user.is_authenticated %}<a class="nav-link navic" href="{% url 'updates' %}">Updates</a>{% endif %}
+
+            </li>
+        </ul>
+        <!-- Left links -->
+
+        {% if user.is_authenticated %}
+          <div class="d-flex align-items-center">
+              <a href="{% url 'profile' %}" class="btn btn-link me-3"><i class="fas fa-id-card fs-4"></i></a>
+              <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+          </div>
+        {% else %}
+          <div class="d-flex align-items-center">
+              <a href="{% url 'login' %}" class="btn btn-link me-3">Login</a>
+              <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
+          </div>
+        {% endif %}
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!--Body-->
+  {% block body %} Body {% endblock body %}
+
+  <footer class="bg-light text-lg-start">
+    <div class="py-4 text-center" style="background: rgba(0, 0, 0, 0.2);">
+      <a role="button" class="btn btn-primary btn-lg m-2 wow pulse"
+        href="#" rel="nofollow" target="_blank" data-wow-iteration="3">
+        Donate Us
+      </a>
+      <a role="button" class="btn btn-warning btn-lg m-2 text-dark" href="#" target="_blank">
+        Download Our App
+      </a>
+    </div>
+
+    <hr class="m-0" />
+
+    <div class="text-center py-4 align-items-center">
+      <p>Follow CancerCare on social media</p>
+      <a href="https://www.youtube.com/" class="btn btn-danger m-1" role="button"
+        rel="nofollow" target="_blank">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://www.facebook.com/" class="btn m-1" role="button" rel="nofollow"
+        target="_blank" style="background: #00008b;">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://twitter.com/" class="btn btn-primary m-1" role="button" rel="nofollow"
+        target="_blank">
+        <i class="fab fa-twitter text-white"></i>
+      </a>
+      <a href="https://github.com/amitpress" class="btn btn-dark m-1" role="button" rel="nofollow"
+        target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021-2022 Copyright:
+      <a class="text-dark" href="https://cancercare.com/">www.cancercare.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <script src="{% static 'core/js/mdb.min.js' %}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+        wow = new WOW({
+            mobile: true,
+        });
+        wow.init();
+    })
+</script>
+</body>
+</html>

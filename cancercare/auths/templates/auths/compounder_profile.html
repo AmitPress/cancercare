@@ -1,0 +1,207 @@
+{% extends 'auths/base.html' %}
+{% load static %}
+{% block title %}{{user_profile.user.first_name}}'s Profile | Compounder Profile{% endblock title %}
+{% block body %}
+<div class="container my-5 mx-3">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            {% comment %} profile card {% endcomment %}
+            <div class="card border border-3 my-3 py-3 mx-5 px-5 wow fadeInUp">
+                <div class="card-title display-6">
+                    User Profile of <span class="text-uppercase text-primary">{{user_profile.user.first_name}} {{user_profile.user.last_name}}</span>
+                </div>
+                <hr />
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">First Name:</span> {{user_profile.user.first_name}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Last Name:</span> {{user_profile.user.last_name}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Email:</span> {{user_profile.user.email}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Phone:</span> {{user_profile.phone}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Role:</span> {{user_profile.role}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="card border border-3 my-3 py-3 mx-5 px-5 wow fadeInUp">
+                <div class="card-body">
+                    <div class="card-title">ADD DRUGS</div>
+                    <div class="card-text">
+                        <form action="{% url 'createdrug' %}" method="post" autocomplete="off">
+                            {% csrf_token %}
+                            <div class="form-outline my-1">
+                                <input type="text" class="form-control" id="drugname" name="Drugname">
+                                <label for="drugname" class="form-label">Name</label>
+                            </div>
+                            <div class="form-outline my-1">
+                                <input type="text" class="form-control" id="drugprice" name="Drugprice">
+                                <label for="drugprice" class="form-label">Price</label>
+                            </div>
+                            <div class="form-outline my-1">
+                                <input type="text" class="form-control" id="manufacturer" name="Manufacturer">
+                                <label for="manufacturer" class="form-label">Manufacturer</label>
+                            </div>
+                            <div class="form-outline my-1">
+                                <input type="text" class="form-control" id="availability" name="Availability">
+                                <label for="availability" class="form-label">Availability</label>
+                            </div>
+                            <button class="btn btn-seocndary" type="submit">ADD</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <a href="{% url 'createpost' %}" class="btn btn-secondary my-1 py-3 mx-5 px-5 wow fadeInUp">CREATE POST</a>
+        </div>
+    </div>
+</div>
+{% comment %} make a container for list update {% endcomment %}
+<div class="container my-3 mx-3">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="card border border-3 py-3 mx-5 px-5 wow fadeInLeft" style="background: rgba(255,0,0,0.3);" data-wow-delay="1s">
+                {% if drugs.has_other_pages %}
+                    <ul class="pagination justify-content-center align-items-center">
+                        {% if drugs.has_previous %}
+                            <li class="page-item mx-2 activated"><a href="?page={{ drugs.previous_page_number }}" class="page-link">Previous</a></li>
+                        {% else %}
+                            <li class="disabled mx-2">Previous</li>
+                        {% endif %}
+
+                        {% if drugs.has_next %}
+                            <li class="page-item mx-2 activated"><a href="?page={{ drugs.next_page_number }}" class="page-link">Next</a></li>
+                        {% else %}
+                            <li class="page-item disabled mx-2">Next</li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+                <div class="display-6">
+                    Drug List Manager
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <ul class="list-group">
+                            {% for drug in drugs %}
+                                <li class="list-group-item my-2">
+                                    Name: {{drug.drugname}} Price: {{drug.drugprice}} Availability: {{drug.availability}} Manufacturer: {{drug.manufacturer}} 
+                                </li>
+                                <a href="{% url 'deletedrug' drug.drugname %}" class="btn btn-danger">DELETE</a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container my-3 mx-3">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="card border border-3 py-3 mx-5 px-5 wow fadeInRight" style="background: rgba(254, 241, 96, 0.7);" data-wow-delay="1s">
+                {% if ambulances.has_other_pages %}
+                    <ul class="pagination justify-content-center align-items-center">
+                        {% if ambulances.has_previous %}
+                            <li class="page-item mx-2 activated"><a href="?page={{ ambulances.previous_page_number }}" class="page-link">Previous</a></li>
+                        {% else %}
+                            <li class="disabled mx-2">Previous</li>
+                        {% endif %}
+
+                        {% if ambulances.has_next %}
+                            <li class="page-item mx-2 activated"><a href="?page={{ ambulances.next_page_number }}" class="page-link">Next</a></li>
+                        {% else %}
+                            <li class="page-item disabled mx-2">Next</li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+                <div class="display-6">
+                    Ambulance Request Management
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <ul class="list-group">
+                            {% for ambulance in ambulances %}
+                                <li class="list-group-item my-2">Name: {{ambulance.fulname}}, Phone: {{ambulance.phone}}, Address: {{ambulance.address}}, Age: {{ambulance.age}}</li>
+                                <a href="{% url 'deleteambulance' ambulance.fulname %}" class="btn btn-warning">DISPATCH</a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-3 mx-3">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="card border border-3 py-3 mx-5 px-5 wow fadeInLeft" style="background: rgba(0, 128, 0, 0.5);" data-wow-delay="1s">
+                {% if volunteers.has_other_pages %}
+                    <ul class="pagination justify-content-center align-items-center">
+                        {% if volunteers.has_previous %}
+                            <li class="page-item mx-2 activated"><a href="?page={{ volunteers.previous_page_number }}" class="page-link">Previous</a></li>
+                        {% else %}
+                            <li class="disabled mx-2">Previous</li>
+                        {% endif %}
+
+                        {% if volunteers.has_next %}
+                            <li class="page-item mx-2 activated"><a href="?page={{ volunteers.next_page_number }}" class="page-link">Next</a></li>
+                        {% else %}
+                            <li class="page-item disabled mx-2">Next</li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+                <div class="display-6">
+                    Volunteer Request Managment
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <ul class="list-group">
+                            {% for volunteer in volunteers %}
+                                <li class="list-group-item my-2">Name: {{volunteer.first_name}}, Phone: {{volunteer.phone}}, Address: {{volunteer.address}}, Age: {{volunteer.age}}</li>
+                                <a href="{% url 'deletevolunteer' volunteer.first_name %}" class="btn btn-success">DISPATCH</a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-3 mx-3">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="card border border-3 py-3 mx-5 px-5 wow fadeInRight" style="background: rgba(72, 113, 247, 0.7);" data-wow-delay="1s">
+                {% if specialists.has_other_pages %}
+                    <ul class="pagination justify-content-center align-items-center">
+                        {% if specialists.has_previous %}
+                            <li class="page-item mx-2 activated"><a href="?page={{ specialists.previous_page_number }}" class="page-link">Previous</a></li>
+                        {% else %}
+                            <li class="disabled mx-2">Previous</li>
+                        {% endif %}
+
+                        {% if specialists.has_next %}
+                            <li class="page-item mx-2 activated"><a href="?page={{ specialists.next_page_number }}" class="page-link">Next</a></li>
+                        {% else %}
+                            <li class="page-item disabled mx-2">Next</li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+                <div class="display-6">
+                    Specialist Request Managment
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <ul class="list-group">
+                            {% for specialist in specialists %}
+                                <li class="list-group-item my-2">Name: {{specialist.first_name}}, Phone: {{specialist.phone}}, Address: {{specialist.address}}, Age: {{specialist.age}}</li>
+                                <a href="{% url 'deletespecialist' specialist.first_name%}" class="btn btn-primary">DISPATCH</a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

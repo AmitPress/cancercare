@@ -1,0 +1,62 @@
+{% extends 'auths/base.html' %}
+{% load static %}
+{% block title %}{{user_profile.user.first_name}}'s Profile | User Profile{% endblock title %}
+{% block body %}
+{% comment %} user profile implementation  {% endcomment %}
+<div class="container my-5 mx-2">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 shadow-2-strong">
+            {% comment %} profile card {% endcomment %}
+            <div class="card border border-3 my-3 py-3 mx-5 px-5 wow fadeInLeft">
+                <div class="card-title display-6">
+                    User Profile of <span class="text-uppercase text-primary">{{user_profile.user.first_name}} {{user_profile.user.last_name}}</span>
+                </div>
+                <hr />
+                <div class="card-body wow fadeInUp" data-wow-delay="0.5s">
+                    <ul class="list-group">
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">First Name:</span> {{user_profile.user.first_name}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Last Name:</span> {{user_profile.user.last_name}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Email:</span> {{user_profile.user.email}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Phone:</span> {{user_profile.phone}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Role:</span> {{user_profile.role}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            {% comment %} profile card {% endcomment %}
+            <div class="card border border-3 my-3 py-3 mx-5 px-5 wow fadeInRight">
+                <div class="card-title display-6 text-danger">
+                    Forms Enrolled:
+                </div>
+                <hr />
+                <div class="card-body wow fadeInUp" data-wow-delay="0.5s">
+                    <ul class="list-group position-relative">
+                        {% if status.rg_amb is True %}
+                            <li class="list-group-item">Registered for Ambulance: <i class="fas fa-check-double position-absolute end-0 ml-3"></i></li>
+                        {% else %}
+                            <li class="list-group-item">Registered for Ambulance: <i class="far fa-times-circle position-absolute end-0 ml-3"></i></li>
+                        {% endif %}
+                        {% if status.rg_vol is True %}
+                            <li class="list-group-item">Registered for Volunteership: <i class="fas fa-check-double position-absolute end-0 ml-3"></i></li>
+                        {% else %}
+                            <li class="list-group-item">Registered for Volunteership: <i class="far fa-times-circle position-absolute end-0 ml-3"></i></li>
+                        {% endif %}
+                        {% if status.rg_spe is True %}
+                            <li class="list-group-item">Registered for Specialist Doctor Visit: <i class="fas fa-check-double position-absolute end-0 ml-3"></i></li>
+                        {% else %}
+                            <li class="list-group-item">Registered for Specialist Doctor Visit: <i class="far fa-times-circle position-absolute end-0 ml-3"></i></li>
+                        {% endif %}
+                    </ul>
+                    <div class="d-flex justify-content-center align-items-center my-2">
+                        <a href="{% url 'register-ambulance' %}" class="btn btn-primary mx-1 {% if status.rg_amb is True %} disabled {% endif %}" >Register Ambulance</a><br />
+                        <a href="{% url 'registervolunteer' %}" class="btn btn-secondary mx-1 {% if status.rg_vol is True %} disabled {% endif %}">Register Volunteer</a><br />
+                        <a href="{% url 'registerspcialist' %}" class="btn btn-warning mx-1 {% if status.rg_spe is True %} disabled {% endif %}">Register Specialist</a><br />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

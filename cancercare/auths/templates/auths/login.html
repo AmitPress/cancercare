@@ -27,7 +27,7 @@
                       {% if fname %}
                       Welcome {{fname}}!!! Our <a href="{%url 'home' %}">services</a> is waiting for you.
                       {% endif %}
-                      <form action="{% url 'login' %}" method="POST">
+                      <form action="{% url 'login' %}" method="POST" autocomplete="off">
                         {% csrf_token %}
                         <p>Please login to your account</p>
       

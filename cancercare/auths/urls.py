@@ -4,11 +4,11 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('signup/', views.signup, name='signup'),
     path('logout/', views.logout, name='logout'),
-    path('profile/', views.profile, name='profile')
+    path('profile/', views.profile, name='profile'),
+    path('profile/createpost/', views.createpost, name='createpost'),
+    path('deletedrug/<delete>', views.deletedrug, name="deletedrug"),
+    path('deleteambulance/<delete>', views.deleteambulance, name="deleteambulance"),
+    path('deletevolunteer/<delete>', views.deletevolunteer, name="deletevolunteer"),
+    path('deletespecialist/<delete>', views.deletespecialist, name="deletespecialist"),
+    path('createdrug/', views.createdrug, name="createdrug"),
 ]
-
-# Now I wanna change something in your view
-# You see, when importing various functions or classes from the same file, just import the file itself
-# I.E. You're importing three functions from the views file. Instead of importing them individually, just import the file itself
-# Let me show you
-# The only time this is necessry is when yiu are importing multiple functions

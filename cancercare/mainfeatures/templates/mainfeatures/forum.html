@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,12 +7,256 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User's Forum | CancerCare</title>
     <link rel="stylesheet" href="{% static 'mainfeatures/css/mdb.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="shortcut icon" href="{% static 'aboutus/img/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <style>
+        .sticky {
+          position: -webkit-sticky;
+          position: sticky !important;
+          top: 0 !important;
+          z-index: 5 !important;
+        }
+        .border{
+            border: 1px dashed grey !important;
+        }
+      </style>
 </head>
 <body>
-    Hi
+    <nav class="navbar navbar-expand-lg navbar-light sticky" style="background: rgb(0,0,255); background-image: linear-gradient(90deg, rgba(0,0,128,0.5) 0%, rgba(61,255,206,1) 100%);">
+        <!-- Container wrapper -->
+        <div class="container">
+            <!-- Navbar brand -->
+            <a class="navbar-brand me-2" href="{%url 'home'%}">
+            <img
+                src="{%static 'aboutus/img/logo.png'%}"
+                height="85px"
+                weight="300px"
+                alt=""
+                loading="lazy"
+                style="margin-top: -1px;"
+            />
+            </a>
+    
+            <!-- Toggle button -->
+            <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#navbarButtonsExample"
+            aria-controls="navbarButtonsExample"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            >
+            <i class="fas fa-bars"></i>
+            </button>
+    
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item hstack">
+                <a class="nav-link navic" href="{% url 'home' %}">Home</a>
+                <a class="nav-link navic" href="{% url 'forum' %}">Feedback</a>
+                <a class="nav-link navic" href="{% url 'aboutus' %}">AboutUs</a>
+                {% if user.is_authenticated %}<a class="nav-link navic" href="{% url 'updates' %}">Updates</a>{% endif %}
+                </li>
+            </ul>
+            <!-- Left links -->
+    
+            {% if user.is_authenticated %}
+              <div class="d-flex align-items-center">
+                  <a href="{% url 'profile' %}" class="btn btn-link me-3"><i class="fas fa-id-card fs-4"></i></a>
+                  <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+              </div>
+            {% else %}
+              <div class="d-flex align-items-center">
+                  <a href="{% url 'login' %}" class="btn btn-link me-3">Login</a>
+                  <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
+              </div>
+            {% endif %}
+            </div>
+            <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!--Body -->
+    {% for message in messages %}
+    <div id="alertbox" class="alert {% if not message.tags == 'error' %}alert-{{message.tags}}{% else %}alert-warning{% endif %} mb-0 alert-dismissible fade show wow bounceIn" role="alert">
+        <strong class="text-uppercase">{{message.tags}}:</strong> {{message}}
+        <button class="close" type="button" data-dismissible="alert" aria-label="close" id="cross">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    <div class="position-relative invisible" id="errmsg"> <div class="card bg-danger text-bold position-absolute top-50 start-50 p-2" id="inerrmsg">You need something to write first! [X]</div></div>
+    <div class="container my-5">
+        <div class="row mx-3 my-3">
+            <form action="{% url 'comment' %}" method="post" autocomplete="off">
+                {% csrf_token %}
+                <div class="col-auto">
+                    <div class="form-outline">
+                        <div class="hstack">
+                            <input type="textarea" class="form-control border-bottom border-2 mx-2"id="comment" name="comment">
+                            <label for="comment" class="form-label">Share your thoughts</label>
+                            <a href="{% url 'forum' %}" class="wow fadeInRight" id="acbtn"><button type="submit" class="btn btn-primary mx-2" id="cbtn">COMMENT</button></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row mx-3 my-2">
+            <!--Divider -->
+            <hr class="mt-5"/>
+            <!--Comments -->
+            <div class="d-flex justify-content-center wow zoomInDown"><div class="display-6">FEEDBACKS</div></div>
+            <ul class="list-group">
+                <div class="fs-3 text-muted">{{comobj.count}} comments in total</div>
+                <nav class="container">
+                    <div class="row">
+                        {% if comobj.comments.has_other_pages %}
+                            <ul class="pagination justify-content-center align-items-center">
+                                {% if comobj.comments.has_previous %}
+                                    <li class="page-item mx-2 activated"><a href="?page={{ comobj.comments.previous_page_number }}" class="page-link">Previous</a></li>
+                                {% else %}
+                                    <li class="disabled mx-2">Previous</li>
+                                {% endif %}
+        
+                                {% if comobj.comments.has_next %}
+                                    <li class="page-item mx-2 activated"><a href="?page={{ comobj.comments.next_page_number }}" class="page-link">Next</a></li>
+                                {% else %}
+                                    <li class="page-item disabled mx-2">Next</li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </nav>
+                {% for comment in comobj.comments %}
+                    <li class="list-group-item py-4" style="background: #bad7ff;">
+                        <div class="card wow fadeInUp">
+                            <div class="card-body">
+                                <div class="card-title"><div class="text-uppercase fs-5 text-primary fw-bold">{{comment.user.username}} - <span class="fs-6 text-muted">{{comment.timestamp | naturaltime }}</span></div></div>
+                                <div class="card-text">{{comment.body}}</div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!--Body -->
+    <footer class="bg-light text-lg-start">
+        <div class="py-4 text-center" style="background: rgba(0, 0, 0, 0.2);">
+          <a role="button" class="btn btn-primary btn-lg m-2"
+            href="#" rel="nofollow" target="_blank">
+            Donate Us
+          </a>
+          <a role="button" class="btn btn-warning btn-lg m-2 text-dark" href="#" target="_blank">
+            Download Our App
+          </a>
+        </div>
+    
+        <hr class="m-0" />
+    
+        <div class="text-center py-4 align-items-center">
+          <p>Follow CancerCare on social media</p>
+          <a href="https://www.youtube.com/" class="btn btn-danger m-1" role="button"
+            rel="nofollow" target="_blank">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://www.facebook.com/" class="btn m-1" role="button" rel="nofollow"
+            target="_blank" style="background: #00008b;">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://twitter.com/" class="btn btn-primary m-1" role="button" rel="nofollow"
+            target="_blank">
+            <i class="fab fa-twitter text-white"></i>
+          </a>
+          <a href="https://github.com/amitpress" class="btn btn-dark m-1" role="button" rel="nofollow"
+            target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+    
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2021-2022 Copyright:
+          <a class="text-dark" href="https://cancercare.com/">www.cancercare.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+    
     <script src="{% static 'mainfeatures/js/mdb.min.js' %}"></script>
+    {% comment %} <script src="{% static 'mainfeatures/js/wow.js' %}"></script> {% endcomment %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        wow = new WOW({
+            mobile: true,
+        });
+        wow.init();
+        $(document).ready(function(){
+            var x = $("#comment").val()
+            if(x.length == 0){
+                $("#cbtn").prop("disabled",true);
+                $("#acbtn").prop("href","javascript:void(0)")
+                $("#acbtn").on("click",function(){
+                    $("#errmsg").removeClass("invisible");
+                    $("#errmsg").on("click", function(){
+                        $("#errmsg").addClass("invisible");
+                        
+                    })
+
+                })
+            }
+            $('#cross').click(function(){
+                $('#alertbox').removeClass('bounceIn')
+                $('#alertbox').addClass('bounceOut')
+                $('#alertbox').hide()
+            });
+            $("#comment").keyup(function(){
+                var l = $("#comment").val().trim().length
+                if(l>0){
+                    $("#cbtn").prop("disabled",false);
+                    $("#errmsg").addClass("invisible");
+                    $("#errmsg").off("click");
+                    $("#acbtn").off("click");
+                }else{
+                    $("#cbtn").prop("disabled",true);
+                    $("#acbtn").prop("href","javascript:void(0)")
+                    $("#acbtn").on("click",function(){
+                        $("#errmsg").removeClass("invisible");
+                        $("#errmsg").on("click", function(){
+                            $("#errmsg").addClass("invisible");
+                            
+                        })
+    
+                    })
+                }
+            })
+            $('.activated').mouseenter(function(){
+                $(this).addClass('border')
+            })
+            $('.activated').mouseleave(function(){
+                $(this).removeClass('border')
+            })
+        });
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+    </script>
 </body>
 </html>

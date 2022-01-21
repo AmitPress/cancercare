@@ -1,148 +1,44 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Register For Emergency Help</title>
+{% extends 'mainfeatures/base.html' %}
+{% block title %}Emergency Ambulance Registration{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="card rounded-lg px-5 py-2 my-3">
+                <form action="" method="POST" autocomplete="off">
+                    {% csrf_token %}
+                    <p class="h4 mb-4">Emergency Ambulance Registration</p>
+                    <div class="form-outline mb-4">
+                        {{form.fname}}
+                        <label for="{{form.fname.id_for_label}}" class="form-label me-2">First Name</label>
+                    </div>
+                    <div class="form-outline mb-4"> 
+                        {{form.lname}}
+                        <label for="{{form.lname.id_for_label}}" class="form-label me-2">Last Name</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                        {{form.fulname}}
+                        <label for="{{form.fulname.id_for_label}}" class="form-label me-2">Full Name</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                        {{form.phone}}
+                        <label for="{{form.phone.id_for_label}}" class="form-label me-2">Phone No.</label>
+                    </div>
+                    
+                    <div class="form-outline mb-4">
+                        {{form.address}}
+                        <label for="{{form.address.id_for_label}}" class="form-label me-3">Address</label>
+                    </div>
 
-    <link rel="stylesheet" href="{% static 'mainfeatures/css/mdb.min.css' %}">
-    <link rel="shortcut icon" href="{% static 'aboutus/img/favicon.ico' %}" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        body{
-            background: linear-gradient(90deg, pink, violet);
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-image:linear-gradient(90deg, pink, violet);">
-        <!-- Container wrapper -->
-        <div class="container">
-            <!-- Navbar brand -->
-            <a class="navbar-brand me-2" href="{%url 'home'%}">
-            <img
-                src="{%static 'aboutus/img/logo.png'%}"
-                height="85px"
-                weight="300px"
-                alt=""
-                loading="lazy"
-                style="margin-top: -1px;"
-            />
-            </a>
+                    <div class="form-outline mb-4">
+                        {{form.age}}
+                        <label for="{{form.age.id_for_label}}" class="form-label me-4">Age</label>
+                    </div>
 
-            <!-- Toggle button -->
-            <button
-            class="navbar-toggler"
-            type="button"
-            data-mdb-toggle="collapse"
-            data-mdb-target="#navbarButtonsExample"
-            aria-controls="navbarButtonsExample"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            >
-            <i class="fas fa-bars"></i>
-            </button>
-
-            <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse" id="navbarButtonsExample">
-            <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-                </li>
-            </ul>
-            <!-- Left links -->
-
-            <div class="d-flex align-items-center">
-                <a href="{%url 'login'%}" class="btn btn-link me-3">Login</a>
-                <a href="{%url 'signup'%}" class="btn btn-primary">Sign Up</a>
-            </div>
-            </div>
-            <!-- Collapsible wrapper -->
-        </div>
-        <!-- Container wrapper -->
-    </nav>
-    <!-- nav ends -->
-    <div class="container">
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-8">
-                <div class="card rounded-lg px-5 py-2 my-3">
-                    <form action="" method="POST" autocomplete="off">
-                        {% csrf_token %}
-                        <p class="h4 mb-4">Emergency Ambulance Registration</p>
-                        <div class="form-outline mb-4">
-                            {{form.fname}}
-                            <label for="{{form.fname.id_for_label}}" class="form-label me-2">First Name</label>
-                        </div>
-                        <div class="form-outline mb-4"> 
-                            {{form.lname}}
-                            <label for="{{form.lname.id_for_label}}" class="form-label me-2">Last Name</label>
-                        </div>
-                        <div class="form-outline mb-4">
-                            {{form.fulname}}
-                            <label for="{{form.fulname.id_for_label}}" class="form-label me-2">Full Name</label>
-                        </div>
-                        <div class="form-outline mb-4">
-                            {{form.phone}}
-                            <label for="{{form.phone.id_for_label}}" class="form-label me-2">Phone No.</label>
-                        </div>
-                        
-                        <div class="form-outline mb-4">
-                            {{form.address}}
-                            <label for="{{form.address.id_for_label}}" class="form-label me-3">Address</label>
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            {{form.age}}
-                            <label for="{{form.age.id_for_label}}" class="form-label me-4">Age</label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary mx-4 mb-4"> Register </button>
-                    </form>
-                </div>
+                    <button type="submit" class="btn btn-primary mx-4 mb-4"> Register </button>
+                </form>
             </div>
         </div>
     </div>
-    <!--footer-->
-    <footer class="bg-light text-lg-start">
-        <div class="py-4 text-center" style="background: rgba(0, 0, 0, 0.2);">
-          <a role="button" class="btn btn-primary btn-lg m-2"
-            href="#" rel="nofollow" target="_blank">
-            Donate Us
-          </a>
-          <a role="button" class="btn btn-warning btn-lg m-2 text-dark" href="#" target="_blank">
-            Download Our App
-          </a>
-        </div>
-    
-        <hr class="m-0" />
-    
-        <div class="text-center py-4 align-items-center">
-          <p>Follow CancerCare on social media</p>
-          <a href="https://www.youtube.com/" class="btn btn-danger m-1" role="button"
-            rel="nofollow" target="_blank">
-            <i class="fab fa-youtube"></i>
-          </a>
-          <a href="https://www.facebook.com/" class="btn m-1" role="button" rel="nofollow"
-            target="_blank" style="background: #00008b;">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://twitter.com/" class="btn btn-primary m-1" role="button" rel="nofollow"
-            target="_blank">
-            <i class="fab fa-twitter text-white"></i>
-          </a>
-          <a href="https://github.com/amitpress" class="btn btn-dark m-1" role="button" rel="nofollow"
-            target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-        </div>
-    
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-          © 2021-2022 Copyright:
-          <a class="text-dark" href="https://cancercare.com/">www.cancercare.com</a>
-        </div>
-        <!-- Copyright -->
-      </footer>
-      <script src="{% static 'mainfeatures/js/mdb.min.js' %}"></script>
-</body>
-</html>
+</div>
+{% endblock body %}

@@ -1,0 +1,537 @@
+{
+  "slides": [
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 384,
+          "y": 283,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Project</font>",
+          "size": 72,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 315,
+          "y": 416,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>CancerCare</font>",
+          "size": 72,
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 0,
+      "selected": false,
+      "active": false,
+      "x": 180,
+      "y": 180
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 191,
+          "y": 51,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Motivation</font>",
+          "size": 139,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 259,
+          "y": 650,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "Web app regarding cancer<br>",
+          "size": 50,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 404,
+          "y": 547,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Result:</font>",
+          "size": 72,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 28,
+          "y": 315,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "Uprise of Cancer in Bangladesh<br>",
+          "size": 72,
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 1,
+      "selected": false,
+      "active": false,
+      "x": 460,
+      "y": 180
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 227,
+          "y": 358,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "Build Community<br>",
+          "size": 72,
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0.68,
+      "rotateZ": 0.01,
+      "index": 2,
+      "selected": false,
+      "active": false,
+      "x": 462,
+      "y": 384
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 214,
+          "y": 352,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Gather Information</font>",
+          "size": 72,
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0.46,
+      "rotateZ": 0,
+      "index": 3,
+      "selected": false,
+      "active": false,
+      "x": 737,
+      "y": 180
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 373,
+          "y": 259,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Django</font>",
+          "size": 72,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 333,
+          "y": 450,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Bootstrap</font>",
+          "size": 72,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 276,
+          "y": 236,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>sqlite</font>",
+          "size": 42,
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 4,
+      "selected": false,
+      "active": false,
+      "x": 985,
+      "y": 344
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 375,
+          "y": 59,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Actors</font>",
+          "size": 72,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 101,
+          "y": 272,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "Webmaster<br>",
+          "size": 72,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 381,
+          "y": 401,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>User</font>",
+          "size": 72,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 448,
+          "y": 537,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "Compounder<br>",
+          "size": 72,
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0.68,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 5,
+      "selected": false,
+      "active": false,
+      "x": 1258,
+      "y": 341
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 114,
+          "y": 343,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Registration Based Service</font>",
+          "size": 72,
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 6,
+      "selected": false,
+      "active": false,
+      "x": 1589,
+      "y": 192
+    },
+    {
+      "components": [
+        {
+          "src": "https://iristech.co/wp-content/uploads/2018/05/types-of-color-blindness.png",
+          "type": "Image",
+          "x": 146,
+          "y": 157,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "imageType": "PNG",
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 346,
+          "y": 25,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Blue Theme</font>",
+          "size": 72,
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": -0.46,
+      "rotateY": -0.5,
+      "rotateZ": -0.06,
+      "index": 7,
+      "selected": true,
+      "active": true,
+      "x": 1988,
+      "y": 87
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 361,
+          "y": 27,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Takeaways</font>",
+          "size": 72,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 57,
+          "y": 177,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Positives</font>",
+          "size": 72,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 60,
+          "y": 433,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Caveats</font>",
+          "size": 72,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 341.3333333333333,
+          "y": 256,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>MVT - Intuitive</font>",
+          "size": 35,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 426,
+          "y": 308,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "- Speparation of concern<br>",
+          "size": 35,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 341,
+          "y": 526,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "django - Slow<br>",
+          "size": 40,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 492,
+          "y": 585,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Not efficient</font>",
+          "size": 36,
+          "selected": false
+        },
+        {
+          "TextBox": {},
+          "x": 490,
+          "y": 636,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Big Binary</font>",
+          "size": 39,
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 8,
+      "selected": false,
+      "active": false,
+      "x": 2159,
+      "y": 458
+    },
+    {
+      "components": [
+        {
+          "TextBox": {},
+          "x": 194,
+          "y": 339,
+          "scale": {
+            "x": 1,
+            "y": 1
+          },
+          "type": "TextBox",
+          "text": "<font>Let's Get to the Demo</font>",
+          "size": 72,
+          "selected": false
+        }
+      ],
+      "z": 0,
+      "impScale": 3,
+      "rotateX": 0,
+      "rotateY": 0,
+      "rotateZ": 0,
+      "index": 9,
+      "selected": false,
+      "active": false,
+      "x": 1878,
+      "y": 460
+    }
+  ],
+  "background": "bg-solid-light",
+  "activeSlide": {
+    "components": [
+      {
+        "src": "https://iristech.co/wp-content/uploads/2018/05/types-of-color-blindness.png",
+        "type": "Image",
+        "x": 146,
+        "y": 157,
+        "scale": {
+          "x": 1,
+          "y": 1
+        },
+        "imageType": "PNG",
+        "selected": false
+      },
+      {
+        "TextBox": {},
+        "x": 346,
+        "y": 25,
+        "scale": {
+          "x": 1,
+          "y": 1
+        },
+        "type": "TextBox",
+        "text": "<font>Blue Theme</font>",
+        "size": 72,
+        "selected": false
+      }
+    ],
+    "z": 0,
+    "impScale": 3,
+    "rotateX": -0.46,
+    "rotateY": -0.5,
+    "rotateZ": -0.06,
+    "index": 7,
+    "selected": true,
+    "active": true,
+    "x": 1988,
+    "y": 87
+  },
+  "fileName": "presentation-unnamed",
+  "overviewX": 1169.5,
+  "overviewY": 273.5
+}

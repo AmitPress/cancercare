@@ -1,0 +1,29 @@
+{% extends 'mainfeatures/base.html' %}
+{% block title %}
+    Compounder List
+{% endblock title %}
+{% block body %}
+<div class="container my-5 mx-3">
+    <div class="row d-flex justify-content-center allow-items-center">
+        <div class="col-md-12 col-sm-12">
+            {% comment %} profile card {% endcomment %}
+            {% for compounder in compounders %}
+            <div class="card border border-3 my-3 py-3 mx-5 px-5 wow fadeInUp">
+                <div class="card-title display-6">
+                    Compounder: <span class="text-uppercase text-primary">{{compounder.user.first_name}} {{compounder.user.last_name}}</span>
+                </div>
+                <hr />
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">First Name:</span> {{compounder.user.first_name}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Last Name:</span> {{compounder.user.last_name}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Email:</span> {{compounder.user.email}}</li>
+                        <li class="list-group-item text-secondary text-uppercase"><span class="text-muted">Phone:</span> {{compounder.phone}}</li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock body %}

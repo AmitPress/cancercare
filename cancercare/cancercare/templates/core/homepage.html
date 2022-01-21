@@ -1,0 +1,99 @@
+{% extends 'core/base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CancerCare | Home{% endblock title %}</title>
+    
+</head>
+<body>
+    {% block body %}
+        {% comment %} PARALAX WILL BE HERE {% endcomment %}
+        <div class="jarallax">
+            <marquee behavior="scroll" direction="left" class="fs-4 text-white fw-bolder">Call now: <i class="fa fa-phone mr-2" aria-hidden="true"></i>017xxx73474</marquee>
+            <img src=" {% static 'core/img/parallaxy.jpg' %} " alt="background" class="jarallax-img">
+            <div class="pos">
+                <div class="hstack"><div class="fs-4 fw-bold text-white wow bounce text-uppercase p-1" style="background-color: rgba(0, 0, 0, 0.6); width: 34vw">We will fight Cancer Together<i class="fas fa-heartbeat text-danger fs-3 wow fadeInUp ml-3" data-wow-delay="1s"></i></div> </div>
+            </div>
+        </div>
+        <div class="container services">
+            <div class="row my-5 mx-4">
+                <div class="display-6">Our Services Highlight</div>
+                <div class="col-sm-12 col-md-4 wow fadeInLeft">
+                    <div class="card mx-1 my-1 shadow-4-strong" style="width: 18rem; height: 19rem;">
+                        <img src="{% static 'core/img/doctor.jpg' %}" class="card-img-top" alt="bloods">
+                        <div class="card-body">
+                            <div class="card-text">
+                                We have the fines people working here, who have experience of the best
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 wow fadeInUp">
+                    <div class="card mx-1 my-1 shadow-4-strong" style="width: 18rem; height: 19rem;">
+                        <img src="{% static 'core/img/bloods.jpg' %}" class="card-img-top" alt="bloods">
+                        <div class="card-body">
+                            <div class="card-text">
+                                We have the largest blood bank network in the country
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 wow fadeInRight">
+                    <div class="card mx-1 my-1 shadow-4-strong" style="width: 18rem; height: 19rem;">
+                        <img src="{% static 'core/img/stem.jpg' %}" class="card-img-top" alt="bloods">
+                        <div class="card-body">
+                            <div class="card-text">
+                                We are the only one who are collecting stem cells for testing all over the country
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container my-3">
+            <div class="row bg-info p-3">
+                <div class="wow fadeInLeft d-flex justify-content-center text-white"><div class="display-6">Get Involved</div></div>
+                <div class="col-md-6 col-sm-12">
+                    <img class="wow fadeInUp" src="{% static 'core/img/vol.png' %}" alt="volunteer">
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    Get Involved with our initiative to resist cancer and prevent the epidemia of it
+                    As of 2017, tobacco use, diet and nutrition, physical activity, obesity/overweight status, infectious agents, and chemical and physical carcinogens have been reported to be the leading areas where cancer prevention can be practiced through enacting positive lifestyle changes, getting appropriate regular screening, and getting vaccinated.
+                </div>
+            </div>
+
+        </div>
+        <div class="container my-3">
+            <div class="row bg-success p-3">
+                <div class="wow fadeInDown d-flex justify-content-center text-white"><div class="display-6">Get Educated</div></div>
+                <div class="col-md-6 col-sm-12">
+                    <img class="wow fadeInUp"style="width: 18rem; height: 13rem;" src="{% static 'core/img/geteducated.jpg' %}" alt="volunteer">
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    The Cancer Education Program (CEP) was established in 1995 to address the education needs of patients with cancer and caregivers. It links the research and patient care endeavors of CancerCare Clinic Cancer Center to provide the best possible experience for each individual who comes through its doors.
+
+The institutionally sanctioned and funded CEP within the Cancer Center is unique at CancerCare Clinic. The institutional support demonstrates CancerCare Clinic's recognition of the Cancer Center's role in addressing all aspects of cancer care.
+
+The mission of the CEP is to educate all audiences on cancer-related issues, including prevention, risks, treatment, survivorship, and end-of-life care. The CEP offers educational programs, classes and support to patients with cancer, their caregivers, staff and the public at all three CancerCare Clinic sites.
+                </div>
+            </div>
+        </div>
+        <div class="container my-3">
+            <div class="row bg-secondary p-3">
+                <div class="wow fadeInLeft d-flex justify-content-center text-white"><div class="display-6">Get Help</div></div>
+                <div class="col-md-6 col-sm-12">
+                    <img class="wow fadeInUp" style="width: 18rem; height: 13rem;" src="{% static 'core/img/yellow.jpg' %}" alt="volunteer">
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    We are happy to help you whenever you're asking for help. Helping is our core motto. We will make it sure none will not go without having helping. Whatever cancer throws your way, we're right there with you. We provide physical, emotional and financial support to help you live life as fully as you can.
+                </div>
+            </div>
+
+        </div>
+        
+    {% endblock body %}
+</body>
+</html>

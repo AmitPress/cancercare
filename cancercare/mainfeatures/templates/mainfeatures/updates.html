@@ -1,0 +1,48 @@
+{% extends 'mainfeatures/base.html' %}
+{% load humanize %}
+{% block body %}
+    {% if post_count > 0 %}
+        <div class="container w-full d-flex justify-content-center align-items-center">
+            <div class="row">
+                {% if posts.has_other_pages %}
+                            <ul class="pagination justify-content-center align-items-center">
+                                {% if posts.has_previous %}
+                                    <li class="page-item mx-2 activated"><a href="?page={{ posts.previous_page_number }}" class="page-link">Previous</a></li>
+                                {% else %}
+                                    <li class="disabled mx-2">Previous</li>
+                                {% endif %}
+        
+                                {% if posts.has_next %}
+                                    <li class="page-item mx-2 activated"><a href="?page={{ posts.next_page_number }}" class="page-link">Next</a></li>
+                                {% else %}
+                                    <li class="page-item disabled mx-2">Next</li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
+                {% for post in posts %}
+                <div class="card shadow-3-strong my-2">
+                    <div class="card-body" style="width: 60vw;">
+                        <div class="card-title hstack">
+                            <div class="fs-5 text-primary">{{post.title}}__</div> by  
+                            <div class="text-secondary mx-1">{{post.author}}</div> since 
+                            <div class="text-muted mx-1">{{post.timestamp | naturalday }}</div>
+                        </div>
+                        <div class="card-text">
+                            {{post.body | truncatechars:20}}
+                        </div>
+                        <div class="text-italic my-2 mx-1 text-info">{{post.ptype}}</div>
+                            <a href="/updates/{{post.slug}}" class="btn btn-primary my-1 wow fadeInUp">READ MORE</a>
+                        {% if profile.role == 'compounder' %}
+                            <a href="{% url 'deletepost' post.serial_no %}" class="btn btn-danger my-1 wow fadeInUp">DELETE</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+    <div class="container">
+        No Posts Being Created
+    </div>
+    {% endif %}
+{% endblock body %}

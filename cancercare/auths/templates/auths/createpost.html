@@ -1,0 +1,42 @@
+{% extends 'auths/base.html' %}
+{% block body %}
+    <div class="container d-flex justify-content-center align-items-center">
+        {% if not profile.role == 'compounder' %}
+            <div class="card bg-danger p-3 my-5">
+                <div class="display-5 text-uppercase">
+                    You are not allowed here
+                </div>
+            </div>
+        {% else %}
+            <div class="card p-3 my-5 w-50 shadow-3-strong">
+                <div class="card-body border border-secondary">
+                    <div class="card-title display-5">Create a Post</div>
+                    <form action=" {% url 'createpost' %} " method="post" autocomplete="off">
+                        {% csrf_token %}
+                        <div class="form-outline my-2">
+                            <input type="text" class="form-control" id="author" name="author">
+                            <label for="author" class="form-label">Author</label>
+                        </div>
+                        <div class="form-outline my-2">
+                            <input type="text" class="form-control" id="ptype" name="ptype">
+                            <label for="ptype" class="form-label">Post Type</label>
+                        </div>
+                        <div class="form-outline my-2">
+                            <input type="text" class="form-control" id="title" name="title">
+                            <label for="title" class="form-label">Title</label>
+                        </div>
+                        <div class="form-outline my-2">
+                            <input type="text" class="form-control" id="slug" name="slug">
+                            <label for="slug" class="form-label">Slug</label>
+                        </div>
+                        <div class="form-outline my-2">
+                            <textarea class="form-control" id="body" name="body"></textarea>
+                            <label for="body" class="form-label">Content</label>
+                        </div>
+                        <input type="submit" class="btn btn-secondary my-2" id="submit" value="CREATE">
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock body %}

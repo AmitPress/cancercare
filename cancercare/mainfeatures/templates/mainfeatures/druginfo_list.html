@@ -1,50 +1,55 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Drug List</title>
+{% extends 'mainfeatures/base.html' %}
+{% block body %}
+<main class="centerize my-3">
+    <div class="sub mt-5 border border-3 position-relative overflow-auto">
+        <h1>Drug List</h1>
+        <form method="GET" action="{%url 'search'%}" class="mx-5 position-absolute end-0 hstack">
+            <div class="form-outline" style="background: white;">
+                <input autocomplete="off" type="text" id="search_drug" class="form-control" name="search_drug"/>
+                <label class="form-label" for="form12">Input Drug Name to Search</label>
+            </div>
+            <button type="submit" class="btn btn-secondary mx-2">Search</button>
+        </form>
+        <br />
+        <table class="table table-striped mt-3">
+            <th>
+                <tr>
+                    <th scope="col">Drug Name</th>
+                    <th scope="col">Drug Price (Taka)</th>
+                    <th scope="col">Availability</th>
+                    <th scope="col">Manufacturer</th>
+                </tr>
+            </th>
+            <tbody>
+                {% for drug in object_list %}
+                <tr>
+                    <td>{{drug.drugname}}</td>
+                    <td>{{drug.drugprice}}</td>
+                    <td>{{drug.availability}}</td>
+                    <td>{{drug.manufacturer}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <nav class="container">
+            <div class="row">
+                {% if is_paginated %}
+                    <ul class="pagination justify-content-center align-items-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item mx-2"><a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a></li>
+                        {% else %}
+                            <li class="disabled mx-2">Previous</li>
+                        {% endif %}
 
-    <link rel="stylesheet" href="{% static 'mainfeatures/css/mdb.min.css' %}">
-    <style>
-        main.centerize{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .sub{
-            width: 60vw;
-            height: 80vh;
-            background: rgb(162, 198, 255);
-        }
-    </style>
-</head>
-<body>
-    <main class="centerize">
-        <div class="sub mt-5">
-            <h1>Drug List</h1>
-            <br />
-            <table class="table table-striped">
-                <th>
-                    <tr>
-                        <th scope="col">Drug Name</th>
-                        <th scope="col">Drug Price (Taka)</th>
-                        <th scope="col">Availability</th>
-                        <th scope="col">Manufacturer</th>
-                    </tr>
-                </th>
-                <tbody>
-                    {% for drug in object_list %}
-                    <tr>
-                        <td>{{drug.drugname}}</td>
-                        <td>{{drug.drugprice}}</td>
-                        <td>{{drug.availability}}</td>
-                        <td>{{drug.manufacturer}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </main>
-    <script src="{% static 'mainfeatures/js/mdb.min.js' %}"></script>
-</body>
-</html>
+                        {% if page_obj.has_next %}
+                            <li class="page-item mx-2"><a href="?page={{ page_obj.next_page_number }}" class="page-link">Next</a></li>
+                        {% else %}
+                            <li class="page-item disabled mx-2">Next</li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+    </div>
+</main>
+{% endblock body %}
